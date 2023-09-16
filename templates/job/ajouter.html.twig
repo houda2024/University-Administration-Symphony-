@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title%}
+
+{% if type == "cand" %}
+Ajout Candidat
+{% elseif type == "job" %}
+Ajout Job
+{% elseif type == "editUser" %}
+Modifier user
+
+{% endif %}
+ {% endblock %}
+{% block body %}
+{{form_start(f)}}
+{{form_widget(f)}}
+{{form_end(f)}}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Hello SecurityController!{% endblock %}
+{% block body %}
+<h1>Detail</h1>
+{% for user in users %}
+<h3>{{ user.username }}</h3>
+{% else %}
+<span> Aucun utilisateur </span>
+{% endfor%}
+{% endblock %}

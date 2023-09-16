@@ -1,0 +1,42 @@
+{%extends 'base.html.twig'%}
+{% block body %}
+
+<h2>   Liste des candidats | <small><a  href="{{path('cand_add')}}" >Ajouter</a></small> </h2>
+{% for msg in app.flashes('notice') %}
+{{msg}}
+{% endfor %}
+
+<table class="table table-hover table-striped" border="1">
+<thead>
+<tr>
+<th>#</th>
+<th>Nom & Prénom</th>
+<th>Contenu</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+{% for candidat in cands %}
+<tr>
+<td>{{ candidat.id}}</td>
+<td>{{ candidat.Candidat | upper}}</td>
+<td>{{ candidat.datec | date('d/m/Y') }}</td>
+<td>{{ candidat.Contenu }}</td>
+<td>
+<a class="btn btn-primary" href="#">Voir</a>
+
+<a class="btn btn-info" href="{{ path('edit_user', {'id':candidat.id }) }}"
+>Modifier</a>
+<a class="btn btn-danger" href="{{ path('cand_delete', {'id':candidat.id }) }}"
+onclick="return confirm('Are you sure to delete! {{ candidat.candidat
+}}')">Supprimer</a>
+</td>
+</tr>
+{% else %}
+<tr>
+<td colspan="5">Aucun abonné</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
